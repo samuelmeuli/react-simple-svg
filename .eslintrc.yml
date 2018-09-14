@@ -38,3 +38,5 @@ rules:
   import/no-extraneous-dependencies:
     - 2
     - devDependencies: true  # ignore storybook-react
+  react/forbid-prop-types: 0
+  react/no-danger: 0

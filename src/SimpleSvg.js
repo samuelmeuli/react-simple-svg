@@ -6,11 +6,11 @@ import { appendStyleDef, replaceChildTag } from './utils';
 
 const propTypes = {
 	src: PropTypes.string.isRequired,
+	height: PropTypes.number.isRequired,
+	width: PropTypes.number.isRequired,
 	className: PropTypes.string,
 	title: PropTypes.string,
 	description: PropTypes.string,
-	height: PropTypes.number,
-	width: PropTypes.number,
 	fill: PropTypes.string,
 	fillOpacity: PropTypes.number,
 	stroke: PropTypes.string,
@@ -22,8 +22,6 @@ const defaultProps = {
 	className: '',
 	title: '',
 	description: '',
-	height: null,
-	width: null,
 	fill: null,
 	fillOpacity: null,
 	stroke: null,
@@ -46,6 +44,16 @@ export default function SimpleSvg(props) {
 		strokeOpacity,
 		svgStyle
 	} = props;
+
+	if (!src) {
+		throw Error('react-simple-svg: Missing "src" prop');
+	}
+	if (!height) {
+		throw Error('react-simple-svg: Missing "height" prop');
+	}
+	if (!width) {
+		throw Error('react-simple-svg: Missing "width" prop');
+	}
 
 	// If src is SVG string
 	if (src.startsWith('<svg')) {

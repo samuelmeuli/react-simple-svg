@@ -26,30 +26,3 @@ export function replaceChildTag(node, childTagName, tagContent) {
 		node.appendChild(newTitleTag);
 	}
 }
-
-/**
- * Get object containing the specified HTML node's attributes
- */
-export function getAttributes(node) {
-	const { attributes } = node;
-	const attrObj = {};
-	for (let i = 0; i < attributes.length; i += 1) {
-		const attr = attributes[i];
-		attrObj[attr.name] = attr.value;
-	}
-	return attrObj;
-}
-
-/**
- * Convert a style string (HTML inline styles) to an object (React styles)
- */
-export function styleStrToObj(styleStr) {
-	const regex = /([\w-]*)\s*:\s*([^;]*)/g;
-	let matches = regex.exec(styleStr);
-	const styleObj = {};
-	while (matches) {
-		styleObj[matches[1]] = matches[2].trim();
-		matches = regex.exec(styleStr);
-	}
-	return styleObj;
-}

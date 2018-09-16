@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { appendStyleDef, getAttributes, replaceChildTag, styleStrToObj } from './utils';
+import { appendStyleDef, replaceChildTag } from './utils';
 
 
 const propTypes = {
@@ -51,20 +51,23 @@ export default function SimpleSvg(props) {
 	if (src.startsWith('<svg')) {
 		// Generate random class name and apply styles to class
 		const randClass = `svg-${Math.random().toString().substring(2)}`;
-		const styles = `<![CDATA[
-			.${randClass} circle,
-			.${randClass} ellipse,
-			.${randClass} line,
-			.${randClass} path,
-			.${randClass} polygon,
-			.${randClass} polyline,
-			.${randClass} rect {
-				${fill ? `fill: ${fill};` : ''}
-				${fillOpacity ? `fill-opacity: ${fillOpacity};` : ''}
-				${stroke ? `stroke: ${stroke};` : ''}
-				${strokeOpacity ? `stroke-opacity: ${strokeOpacity};` : ''}
-			}
-		]]>`;
+		let styleDef;
+		if (fill || fillOpacity || stroke || strokeOpacity) {
+			styleDef = `<![CDATA[
+				.${randClass} circle,
+				.${randClass} ellipse,
+				.${randClass} line,
+				.${randClass} path,
+				.${randClass} polygon,
+				.${randClass} polyline,
+				.${randClass} rect {
+					${fill ? `fill: ${fill};` : ''}
+					${fillOpacity ? `fill-opacity: ${fillOpacity};` : ''}
+					${stroke ? `stroke: ${stroke};` : ''}
+					${strokeOpacity ? `stroke-opacity: ${strokeOpacity};` : ''}
+				}
+			]]>`;
+		}
 
 		// Convert SVG string to HTML node for access to attributes and children
 		const svgWrapper = document.createElement('div');
@@ -78,28 +81,27 @@ export default function SimpleSvg(props) {
 		if (description) {
 			replaceChildTag(svg, 'desc', description);
 		}
-		appendStyleDef(svg, styles);
+		if (styleDef) {
+			appendStyleDef(svg, styleDef);
+		}
 
 		// Update SVG attributes
-		const svgAttrs = getAttributes(svg);
 		// Class
-		const existingClasses = svgAttrs.class || '';
-		delete svgAttrs.class;
-		svgAttrs.className = `${existingClasses} ${randClass}`;
+		svg.classList.add(randClass);
 		// Dimensions
-		svgAttrs.height = height || null;
-		svgAttrs.width = width || null;
+		svg.style.height = `${height}px`;
+		svg.style.width = `${width}px`;
 		// Styles
-		const existingStyles = styleStrToObj(svgAttrs.style);
-		delete svgAttrs.style;
+		Object.keys(svgStyle).forEach((key) => {
+			svg.style[key] = `${svgStyle[key]}`;
+		});
 
 		return (
-			<svg
+			<span
+				className="svg-wrapper"
 				dangerouslySetInnerHTML={{
-					__html: svg.innerHTML
+					__html: svgWrapper.innerHTML
 				}}
-				style={{ ...existingStyles, ...svgStyle }}
-				{...svgAttrs}
 			/>
 		);
 	}

@@ -16,13 +16,17 @@ export function appendStyleDef(svgNode, styles) {
 /**
  * Overwrite content of specified HTML child node
  */
-export function replaceChildTag(node, childTagName, tagContent) {
+export function replaceChildTag(node, childTagName, tagContent, mustBeFirstChild) {
 	const existingTag = node.getElementsByTagName(childTagName)[0];
 	if (existingTag) {
 		existingTag.innerHTML = tagContent;
 	} else {
 		const newTitleTag = document.createElement(childTagName);
 		newTitleTag.innerHTML = tagContent;
-		node.appendChild(newTitleTag);
+		if (mustBeFirstChild) {
+			node.insertAdjacentElement('afterbegin', newTitleTag);
+		} else {
+			node.appendChild(newTitleTag);
+		}
 	}
 }

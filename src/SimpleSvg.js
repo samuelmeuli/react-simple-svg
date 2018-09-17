@@ -84,7 +84,7 @@ export default function SimpleSvg(props) {
 
 		// Update SVG child nodes
 		if (title) {
-			replaceChildTag(svg, 'title', title);
+			replaceChildTag(svg, 'title', title, true);
 		}
 		if (description) {
 			replaceChildTag(svg, 'desc', description);

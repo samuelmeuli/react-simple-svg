@@ -11,6 +11,7 @@ const propTypes = {
 	className: PropTypes.string,
 	title: PropTypes.string,
 	description: PropTypes.string,
+	role: PropTypes.string,
 	fill: PropTypes.string,
 	fillOpacity: PropTypes.number,
 	stroke: PropTypes.string,
@@ -22,6 +23,7 @@ const defaultProps = {
 	className: '',
 	title: '',
 	description: '',
+	role: 'img',
 	fill: null,
 	fillOpacity: null,
 	stroke: null,
@@ -36,6 +38,7 @@ export default function SimpleSvg(props) {
 		className,
 		title,
 		description,
+		role,
 		height,
 		width,
 		fill,
@@ -96,6 +99,8 @@ export default function SimpleSvg(props) {
 		// Update SVG attributes
 		// Class
 		svg.classList.add(randClass);
+		// Role
+		svg.setAttribute('role', role);
 		// Dimensions
 		svg.style.height = `${height}px`;
 		svg.style.width = `${width}px`;
@@ -121,6 +126,7 @@ export default function SimpleSvg(props) {
 				className={className}
 				height={height}
 				width={width}
+				role={role}
 				style={{
 					...svgStyle,
 					fill,

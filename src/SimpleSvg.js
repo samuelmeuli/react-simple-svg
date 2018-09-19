@@ -121,30 +121,28 @@ export default function SimpleSvg(props) {
 
 	// If src is URL
 	return (
-		<div>
-			<svg
-				className={className}
+		<svg
+			className={className}
+			height={height}
+			width={width}
+			role={role}
+			style={{
+				...svgStyle,
+				fill,
+				fillOpacity,
+				stroke,
+				strokeOpacity
+			}}
+		>
+			{ title && <title>{title}</title>}
+			{ description && <desc>{description}</desc>}
+			<use
+				xlinkHref={src} // SVG v1.1 (still required by Safari)
+				href={src} // SVG v2
 				height={height}
 				width={width}
-				role={role}
-				style={{
-					...svgStyle,
-					fill,
-					fillOpacity,
-					stroke,
-					strokeOpacity
-				}}
-			>
-				{ title && <title>{title}</title>}
-				{ description && <desc>{description}</desc>}
-				<use
-					xlinkHref={src} // SVG v1.1 (still required by Safari)
-					href={src} // SVG v2
-					height={height}
-					width={width}
-				/>
-			</svg>
-		</div>
+			/>
+		</svg>
 	);
 }
 

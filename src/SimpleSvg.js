@@ -95,6 +95,9 @@ export default function SimpleSvg(props) {
 		// Update SVG attributes
 		// Class
 		svg.classList.add(randClass);
+		if (className) {
+			svg.classList.add(className);
+		}
 		// Role
 		svg.setAttribute('role', role);
 		// Dimensions

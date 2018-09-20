@@ -1,6 +1,6 @@
 {
 	"name": "react-simple-svg",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Inline SVGs in React made easy",
 	"keywords": [
 		"svg",

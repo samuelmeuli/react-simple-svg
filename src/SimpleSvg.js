@@ -6,8 +6,8 @@ import { appendStyleDef, replaceChildTag } from './utils';
 
 const propTypes = {
 	src: PropTypes.string.isRequired,
-	height: PropTypes.number.isRequired,
-	width: PropTypes.number.isRequired,
+	height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	className: PropTypes.string,
 	title: PropTypes.string,
 	description: PropTypes.string,
@@ -21,6 +21,8 @@ const propTypes = {
 
 const defaultProps = {
 	className: '',
+	height: null,
+	width: 100,
 	title: '',
 	description: '',
 	role: 'img',
@@ -50,12 +52,6 @@ export default function SimpleSvg(props) {
 
 	if (!src) {
 		throw Error('react-simple-svg: Missing "src" prop');
-	}
-	if (!height) {
-		throw Error('react-simple-svg: Missing "height" prop');
-	}
-	if (!width) {
-		throw Error('react-simple-svg: Missing "width" prop');
 	}
 
 	// If src is SVG string
@@ -139,8 +135,8 @@ export default function SimpleSvg(props) {
 			<use
 				xlinkHref={src} // SVG v1.1 (still required by Safari)
 				href={src} // SVG v2
-				height={height}
-				width={width}
+				height="100%"
+				width="100%"
 			/>
 		</svg>
 	);

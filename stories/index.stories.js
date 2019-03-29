@@ -1,10 +1,9 @@
-import React from 'react';
 import { storiesOf } from '@storybook/react';
+import React from 'react';
 
-import './style.css';
-import SimpleSvg from '../lib/SimpleSvg';
+import SimpleSvg from '../lib/SimpleSvg.es';
 import svgImport from './example-import.svg';
-
+import './style.css';
 
 const svgString = '<svg id="star" xmlns="http://www.w3.org/2000/svg" width="255" height="240" viewBox="0 0 51 48"><path fill="none" stroke="#000" d="M25 1l6 17h18L35 29l5 17-15-10-15 10 5-17L1 18h18z" /></svg>';
 

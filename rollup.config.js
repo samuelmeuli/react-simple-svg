@@ -1,12 +1,20 @@
 import babel from 'rollup-plugin-babel';
 
+import pkg from './package.json';
+
 
 export default {
 	input: 'src/SimpleSvg',
-	output: {
-		file: 'lib/SimpleSvg.js',
-		format: 'cjs'
-	},
+	output: [
+		{
+			file: pkg.main,
+			format: 'cjs'
+		},
+		{
+			file: pkg.module,
+			format: 'es'
+		}
+	],
 	external: ['react', 'prop-types'],
 	plugins: [
 		babel({

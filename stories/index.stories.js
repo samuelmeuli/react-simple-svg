@@ -12,7 +12,7 @@ storiesOf('Import methods', module)
 	.add('Using import', () => (
 		<SimpleSvg
 			src={svgImport}
-			title="Example 1"
+			title="Using import"
 			height={100}
 			width={100}
 			stroke="red"
@@ -21,7 +21,7 @@ storiesOf('Import methods', module)
 	.add('From string', () => (
 		<SimpleSvg
 			src={svgString}
-			title="Example 2"
+			title="From string"
 			height={100}
 			width={100}
 			stroke="red"
@@ -30,7 +30,7 @@ storiesOf('Import methods', module)
 	.add('From path', () => (
 		<SimpleSvg
 			src="./example-url.svg#star"
-			title="Example 3"
+			title="From path"
 			height={100}
 			width={100}
 			fill="none"
@@ -42,7 +42,7 @@ storiesOf('Props', module)
 	.add('Fill opacity', () => (
 		<SimpleSvg
 			src={svgImport}
-			title="Example 1"
+			title="Fill opacity"
 			height={100}
 			width={100}
 			stroke="red"
@@ -53,7 +53,7 @@ storiesOf('Props', module)
 	.add('Stroke opacity', () => (
 		<SimpleSvg
 			src={svgImport}
-			title="Example 1"
+			title="Stroke opacity"
 			height={100}
 			width={100}
 			stroke="red"
@@ -73,7 +73,7 @@ storiesOf('Props', module)
 	.add('Custom style', () => (
 		<SimpleSvg
 			src={svgImport}
-			title="Example 1"
+			title="Custom style"
 			height={100}
 			width={100}
 			stroke="red"

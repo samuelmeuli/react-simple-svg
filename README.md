@@ -14,9 +14,6 @@ Why another SVG component library for React?
 * Accessibility support
 
 
-→ **[Examples](https://samuelmeuli.github.io/react-simple-svg)**
-
-
 ## Usage
 
 Install the package using NPM:

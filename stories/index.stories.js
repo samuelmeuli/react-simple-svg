@@ -60,6 +60,16 @@ storiesOf('Props', module)
 			strokeOpacity={0.2}
 		/>
 	))
+	.add('Stroke width', () => (
+		<SimpleSvg
+			src={svgImport}
+			title="Stroke width"
+			height={100}
+			width={100}
+			stroke="red"
+			strokeWidth={2}
+		/>
+	))
 	.add('Custom style', () => (
 		<SimpleSvg
 			src={svgImport}

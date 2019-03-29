@@ -16,6 +16,7 @@ const propTypes = {
 	fillOpacity: PropTypes.number,
 	stroke: PropTypes.string,
 	strokeOpacity: PropTypes.number,
+	strokeWidth: PropTypes.number,
 	svgStyle: PropTypes.object
 };
 
@@ -30,6 +31,7 @@ const defaultProps = {
 	fillOpacity: null,
 	stroke: null,
 	strokeOpacity: null,
+	strokeWidth: null,
 	svgStyle: {}
 };
 
@@ -48,6 +50,7 @@ export default class SimpleSvg extends PureComponent {
 			fillOpacity,
 			stroke,
 			strokeOpacity,
+			strokeWidth,
 			svgStyle
 		} = this.props;
 
@@ -60,7 +63,7 @@ export default class SimpleSvg extends PureComponent {
 			// Generate random class name and apply styles to class
 			const randClass = `svg-${Math.random().toString().substring(2)}`;
 			let styleDef;
-			if (fill || fillOpacity || stroke || strokeOpacity) {
+			if (fill || fillOpacity || stroke || strokeOpacity || strokeWidth) {
 				styleDef = `<![CDATA[
 					.${randClass} circle,
 					.${randClass} ellipse,
@@ -73,6 +76,7 @@ export default class SimpleSvg extends PureComponent {
 						${fillOpacity ? `fill-opacity: ${fillOpacity};` : ''}
 						${stroke ? `stroke: ${stroke};` : ''}
 						${strokeOpacity ? `stroke-opacity: ${strokeOpacity};` : ''}
+						${strokeWidth ? `stroke-width: ${strokeWidth};` : ''}
 					}
 				]]>`;
 			}
@@ -131,7 +135,8 @@ export default class SimpleSvg extends PureComponent {
 					fill,
 					fillOpacity,
 					stroke,
-					strokeOpacity
+					strokeOpacity,
+					strokeWidth
 				}}
 			>
 				{ title && <title>{title}</title>}

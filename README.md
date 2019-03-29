@@ -8,14 +8,14 @@ Why another SVG component library for React?
   - `import` statements
   - SVG strings
   - URLs
-  
+
 * Makes it easy to change strokes and fills without CSS
 
 * Accessibility support
 
 
 → **[Examples](https://samuelmeuli.github.io/react-simple-svg)**
- 
+
 
 ## Usage
 
@@ -112,13 +112,14 @@ Prop | Type | Default | Description
 `height` (required) | Number | – | SVG height
 `width` (required) | Number | – | SVG width
 `className` | String | `""` | Additional class names for the `<svg>` tag
-`title` | String | – | Content for the [SVG `<title>` tag](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title) (recommended for accessibility) 
+`title` | String | – | Content for the [SVG `<title>` tag](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title) (recommended for accessibility)
 `description` | String | – | Content for the [SVG `<desc>` tag](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc) (recommended for accessibility)
 `role` | String | `"img"` | Role of the SVG element (e.g. `"img`, `"presentation"`)
 `fill` | String | – | SVG fill color
 `fillOpacity` | Number | – | SVG fill opacity
 `stroke` | Number | – | SVG stroke color
 `strokeOpacity` | Number | – | SVG stroke opacity
+`strokeWidth` | Number | – | SVG stroke width
 `svgStyle` | Number | `{}` | Additional styles to apply to the `<svg>` tag
 
 
